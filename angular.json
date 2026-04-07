@@ -26,7 +26,18 @@
             ],
             "styles": [
               "src/styles.css"
-            ]
+            ],
+
+            "scripts": [
+        "public/plugins/jquery/jquery.min.js",
+        "public/plugins/bootstrap/js/bootstrap.bundle.min.js",
+        "public/plugins/chart.js/Chart.min.js",
+        "public/plugins/raphael/raphael.min.js",
+        "public/plugins/jquery-mapael/jquery.mapael.min.js",
+        "public/plugins/jquery-mapael/maps/usa_states.min.js",
+        "public/dist/js/adminlte.js",
+        "public/dist/js/pages/dashboard2.js"
+        ]
           },
           "configurations": {
             "production": {
