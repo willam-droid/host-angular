@@ -35,44 +35,53 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+<li class="nav-item has-treeview" [class.menu-open]="isDashboardMenuOpen">
+
+  <a href="#" class="nav-link" (click)="toggleDashboardMenu($event)" [class.active]="moduleName == 'dashboard' || moduleName == 'dashboard2' || moduleName == 'dashboard3'">
+    <i class="nav-icon fas fa-tachometer-alt"></i>
+    <p>
+      Dashboard
+      <i class="right fas fa-angle-left"></i>
+    </p>
+  </a>
+
+  <ul class="nav nav-treeview" [style.display]="isDashboardMenuOpen ? 'block' : 'none'">
+    <li class="nav-item">
+      <a [routerLink]="['/dashboard']" class="nav-link" [class.active]="moduleName == 'dashboard'">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Dashboard v1</p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/dashboard2']" class="nav-link" [class.active]="moduleName == 'dashboard2'">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Dashboard v2</p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/dashboard3']" class="nav-link" [class.active]="moduleName == 'dashboard3'">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Dashboard v3</p>
+      </a>
+    </li>
+  </ul>
+</li>
+         <li class="nav-item">
+          <a [routerLink]="['/mahasiswa']" routerLinkActive="router-link-active" class="nav-link {{ (moduleName == 'mahasiswa') ? 'active' : '' }}">
+            <i class="fas fa-graduation-cap"></i>
               <p>
-                Dashboard
-                <i class="right fas fa-angle-left"></i>
+                Mahasiswa
               </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" class="nav-link {{ moduleName == 'dashboard' ? 'active' : ''}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a [routerLink]="['/dashboard2']" routerLinkActive="router-link-active" class="nav-link {{ moduleName == 'dashboard2' ? 'active' : ''}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a [routerLink]="['/dashboard3']" routerLinkActive="router-link-active" class="nav-link {{ moduleName == 'dashboard3' ? 'active' : ''}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+          </a>
+        </li>
+        <li class="nav-item">
+            <a href="/mahasiswa" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Widgets
-                <span class="right badge badge-danger">New</span>
+                Mahasiswa (Non-router)
               </p>
             </a>
-          </li>
+        </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
