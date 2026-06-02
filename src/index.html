@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Angular231103868</title>
-    <base href="/" />
+    <base href="/host-angular/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!-- Favicon -->
 <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
@@ -51,6 +51,17 @@
     />
     <link rel="manifest" href="manifest.webmanifest" />
     <meta name="theme-color" content="#1976d2" />
+
+    <script>
+      (function() {
+      var query = window.location.search;
+        if (query.includes('path=')) {
+          var path = query.split('path=')[1];
+          window.history.replaceState(null, null, path);
+      }
+      })();
+    </script>
+    
   </head>
   <body class="hold-transition sidebar-mini layout-fixed dark-mode">
     <app-root></app-root>
