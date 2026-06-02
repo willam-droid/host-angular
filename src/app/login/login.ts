@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import * as CryptoJS from 'crypto-js';
+
 
 declare const $:any;
 
@@ -13,6 +15,8 @@ declare const $:any;
   styleUrl: './login.css',
 })
 export class Login implements OnInit, OnDestroy {
+
+  secretKey = "akulashark098";
 
   // 1. Combine all injected services into a single constructor
   constructor(
@@ -41,15 +45,15 @@ export class Login implements OnInit, OnDestroy {
   }
 
   showPeringatanModal(message: string): void{
-    $("#peringatanModal").modal();
     $("#pm_message").html(message);
+    $("#peringatanmodal").modal("show");
   }
 
   signIn(): void {
     console.log("signIn()");
 
-    var userId = $("#idText").val();
-    userId = encodeURIComponent(userId);
+    var originalUserId = $("#idText").val();
+    var userId = encodeURIComponent(originalUserId);
 
     var password = $("#passwordText").val();
     password = encodeURIComponent(password);
@@ -60,17 +64,48 @@ export class Login implements OnInit, OnDestroy {
     console.log("url : " + url);
 
     this.httpclient.get(url).subscribe((data: any) => {
-      console.log(data);
-      var row = data[0];
 
-      if (row.idCount != "1"){
-        this.showPeringatanModal("Id atau password tidak cocok");
-        return;
-      }
+  console.log(data);
 
-      this.cookieService.set("userId", userId);
-      console.log("session data berhasil dibuat");
-      this.router.navigate(["/dashboard"])
-    });
+       if (!data || data.length == 0) {
+      this.showPeringatanModal("Response server kosong");
+      return;
+    }
+
+  var row = data[0];
+
+  if (row.idCount != "1") {
+    this.showPeringatanModal("Id atau password tidak cocok");
+    return;
+  }
+
+  // Encrypt
+
+  const encryptedUserId = CryptoJS.AES.encrypt(
+    userId,
+    this.secretKey
+  ).toString();
+
+  // Save cookie
+  this.cookieService.set("userData", encryptedUserId);
+
+  console.log("session data berhasil dibuat");
+
+  // TEST decrypt
+  const encrypted = this.cookieService.get("userData");
+
+  const bytes = CryptoJS.AES.decrypt(
+    encrypted,
+    this.secretKey
+  );
+
+  const decryptedUserId =
+    bytes.toString(CryptoJS.enc.Utf8);
+
+  console.log(decryptedUserId);
+
+  this.router.navigate(["/dashboard"]);
+
+});
   }
 }
