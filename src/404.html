@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      var path = window.location.pathname;
+      window.location.replace('/' + window.location.pathname.split('/')[1] + '/?path=' + path);
+    </script>
+  </head>
+</html>
