@@ -56,7 +56,6 @@
   "public/plugins/summernote/summernote-bs4.min.js",
   "public/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js",
   "public/dist/js/adminlte.js",
-  "public/dist/js/pages/dashboard.js",
   "public/dist/js/pages/dashboard2.js",
   "public/dist/js/pages/dashboard3.js"
         ]
