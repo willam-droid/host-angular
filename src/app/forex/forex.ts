@@ -66,7 +66,7 @@ export class Forex implements AfterViewInit {
 
           // Calculate the rate for specific currency
           const rate = rates.IDR / rates[currency];
-          const formatRate = const formatRate = rate.toLocaleString("id-ID", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+          const formatRate = rate.toLocaleString("id-ID", {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
           console.log(`${currency}: ${currencyName} - ${formatRate}`);
 
