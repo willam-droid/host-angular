@@ -59,6 +59,7 @@ export class Forex implements AfterViewInit {
 
         // Iterate over the rates and add the rows to the Table
         this._table1.clear();
+        console.log("Before loop");
         for (const currency in rates) {
           // Get the currency name from the API
           const currencyName = currencies[currency];
@@ -73,7 +74,7 @@ export class Forex implements AfterViewInit {
           const row = [index++, currency, currencyName, formatRate];
           this._table1.row.add(row);
         }
-
+        console.log("After loop");
         this._table1.draw(false);
 
         console.log("Total rows:", this._table1.rows().count());
