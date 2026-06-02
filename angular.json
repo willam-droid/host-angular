@@ -23,6 +23,7 @@
                 "glob": "**/*",
                 "input": "public"
               }
+              "src/404.html"
             ],
             "styles": [
               "public/plugins/fontawesome-free/css/all.min.css",
