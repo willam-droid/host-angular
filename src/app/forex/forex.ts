@@ -75,6 +75,8 @@ export class Forex implements AfterViewInit {
         }
 
         this._table1.draw(false);
+
+        console.log("Total rows:", this._table1.rows().count());
       });
     });
   }
