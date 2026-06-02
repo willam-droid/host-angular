@@ -43,7 +43,7 @@ export class Forex implements AfterViewInit {
     console.log("bindTable1()");
 
     // URL to fetch exchange rates
-    const ratesUrl = "https://api.frankfurter.app/latest";
+    const ratesUrl = "https://openexchangerates.org/api/latest.json?app_id=98d29f3f1f7b4724bc99002f9803d1a2";
     // URL to fetch currency names
     const currenciesUrl = "https://openexchangerates.org/api/currencies.json";
 
