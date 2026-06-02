@@ -53,7 +53,7 @@ export class Forex implements AfterViewInit {
       this.httpClient.get(ratesUrl).subscribe((data: any) => {
          console.log("Rates API Response:");
           console.log(data);
-        $("#tanggal").html("Data per tanggal " + formatDate( new Date(data.timestamp * 1000), 'dd MMMM yyyy', 'id-ID'));
+        $("#tanggal").html("Data per tanggal " + formatDate( new Date(data.timestamp * 1000), 'dd MMMM yyyy', 'en-US'));
         const rates = data.rates;
         let index = 1;
 
@@ -66,7 +66,7 @@ export class Forex implements AfterViewInit {
 
           // Calculate the rate for specific currency
           const rate = rates.IDR / rates[currency];
-          const formatRate = rate.toLocaleString("id-ID", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+          const formatRate = "en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
           console.log(`${currency}: ${currencyName} - ${formatRate}`);
 
