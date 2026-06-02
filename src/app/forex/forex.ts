@@ -61,19 +61,21 @@ export class Forex implements AfterViewInit {
         this._table1.clear();
         console.log("Before loop");
         for (const currency in rates) {
-          // Get the currency name from the API
           const currencyName = currencies[currency];
 
-          // Calculate the rate for specific currency
           const rate = rates.IDR / rates[currency];
-          const formatRate = "en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+          const formatRate = rate.toLocaleString("en-US", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          });
 
           console.log(`${currency}: ${currencyName} - ${formatRate}`);
 
-          // Add the row with the index, symbol, currency name, and formated rate
           const row = [index++, currency, currencyName, formatRate];
+
           this._table1.row.add(row);
-        }
+          }
         console.log("After loop");
         this._table1.draw(false);
 
